@@ -6,7 +6,7 @@ import aiomqtt
 from enum import Enum
 import os
 import sys
-student_id = "6300001"
+student_id = "6310301025"
 
 class MachineStatus(Enum):
     pressure = round(random.uniform(2000,3000), 2)
