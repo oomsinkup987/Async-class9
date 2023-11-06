@@ -90,6 +90,8 @@ async def CoroWashingMachine(w, client):
             await task
             if w.MACHINE_STATUS == 'FAULT':
                 await publish_message(w, client, 'hw', 'get', 'FAULT', w.FAULT_TYPE)
+                
+            # When washing is in FAULT state, wait until get FAULTCLEARED
             while w.MACHINE_STATUS == 'FAULT':
                 print(
                     f"{time.ctime()} - [{w.SERIAL}] Waiting to clear fault...")
@@ -103,8 +105,6 @@ async def CoroWashingMachine(w, client):
 
             if w.MACHINE_STATUS == 'WASHING':
                 continue
-            # ready state set 
-            # When washing is in FAULT state, wait until get FAULTCLEARED
 
             
 
